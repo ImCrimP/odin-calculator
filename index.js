@@ -11,6 +11,8 @@ let opClick = false;
 const clear = document.querySelector("#clear");
 clearClicked = false;
 
+const deleteBtn = document.querySelector("#delete");
+
 const numArray = [
     document.querySelector("#zero"),
     document.querySelector("#one"),
@@ -41,11 +43,10 @@ displayInput();
 function displayInput(){
     
     numClick();
-
     operationClick();
-
     clearClick();
-
+    deleteClick();
+    
 }
 
 
@@ -69,9 +70,11 @@ function numClick(){
 function operationClick(){
     for(let i = 0; i < operatorsArray.length; i++){
         operatorsArray[i].addEventListener("click", () =>{
-            operator = operatorsArray[i].textContent;
-            opClick = true;
-            console.log("operation " + operator);
+            if(firstVal != ''){
+                operator = operatorsArray[i].textContent;
+                opClick = true;
+                console.log("operation " + operator); 
+            }        
         })
     }
 }
@@ -82,5 +85,18 @@ function clearClick(){
         secondVal = '';
         clearClicked = true;
         opClick = false;
+    })
+}
+
+function deleteClick(){
+    deleteBtn.addEventListener("click", () => {
+        if(!opClick){
+            firstVal = firstVal.slice(0, -1);
+            console.log("first value " + firstVal);
+        }
+        else{
+            secondVal = secondVal.slice(0, -1);
+            console.log("second Value " + secondVal);
+        }
     })
 }
