@@ -4,7 +4,9 @@ const prevCalc = document.querySelector("#prevCalc");
 const buttons = document.querySelectorAll(".btn");
 
 let firstVal = '';
+let firstValInt;
 let secondVal = '';
+let secondValInt;
 let operator = '';
 let opClick = false;
 
@@ -15,6 +17,9 @@ const deleteBtn = document.querySelector("#delete");
 
 const decimal = document.querySelector("#dec");
 let decClick = false;
+
+const equal = document.querySelector("#eq");
+let eqClick = false;
 
 const numArray = [
     document.querySelector("#zero"),
@@ -38,18 +43,19 @@ const operatorsArray = [
 ]
 
 
-displayInput();
+run();
 
 
 
 
-function displayInput(){
+function run(){
     
     numClick();
     operationClick();
     clearClick();
     deleteClick();
     decimalClick();
+    equalClick();
 
 }
 
@@ -59,14 +65,12 @@ function numClick(){
         numArray[i].addEventListener("click", ()=>{
             if(!opClick){
                 firstVal += numArray[i].textContent;
-                //console.log(firstVal) 
+                console.log("first value " + firstVal)
             }
             else{
                 secondVal += numArray[i].textContent;
+                console.log("second value " + secondVal);
             }
-            
-            console.log("first value " + firstVal)
-            console.log("second value " + secondVal);
         });
     }
 }
@@ -78,7 +82,8 @@ function operationClick(){
                 operator = operatorsArray[i].textContent;
                 opClick = true;
                 console.log("operation " + operator); 
-            }        
+            }
+            decClick = false;    
         })
     }
 }
@@ -121,4 +126,21 @@ function decimalClick(){
             secondVal += "."
         }
     })
+}
+
+function equalClick(){
+    equal.addEventListener("click", () => {
+        if(firstVal != '' && secondVal != ""){
+            eqClick = true;
+            console.log("=")
+        }
+    })
+}
+
+function displayInput(){
+    for(let i = 0; i < buttons.length; i++){
+        buttons.addEventListener("click", () => {
+
+        })
+    }
 }
