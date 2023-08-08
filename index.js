@@ -1,5 +1,3 @@
-//const display = document.querySelector("#asn");
-//const prevCalc = document.querySelector("#prevCalc");
 const calc = document.querySelector("#screen");
 
 const prevCalc = document.createElement("div");
@@ -109,13 +107,12 @@ function operationClick(){
                 }
                 else{
                     
-                    prevCalc.textContent = `${firstVal} ${operator}`;
-                    
+                    prevCalc.textContent = `${firstVal} ${operator} ${secondVal}`; 
                     
                 }
-                
                
             }
+
             decClick = false;
             eqClick = false;    
         })
@@ -187,37 +184,41 @@ function decimalClick(){
 
 function equalClick(){
     equal.addEventListener("click", () => {
-        if(firstVal != '' && secondVal != ""){
-
-            firstValInt = parseFloat(firstVal);
-            secondValInt = parseFloat(secondVal);
-            
-                
-            if(operator == "÷"){
-                answer = Math.floor(1000 * (firstValInt / secondValInt))/1000;
-                display.textContent = answer;
-            }
-            else if(operator == "x"){
-                answer = Math.floor(1000* (firstValInt * secondValInt))/1000;
-                display.textContent = answer;
-            }
-            else if(operator == "-"){
-                answer = Math.floor(1000*(firstValInt - secondValInt))/1000;
-                display.textContent = answer;
-            }
-            else if (operator == "+"){
-                answer = Math.floor(1000*(firstValInt + secondValInt))/1000;
-                display.textContent = answer;
-            }
-            prevCalc.textContent = `${firstVal} ${operator} ${secondVal} =`;
-
-            firstVal = answer;
-            secondVal = "";
-            operator = "";
-            
-            
-            eqClick = true;
-            
-        }
+        mathLogic();
     })
+}
+
+function mathLogic(){
+    if(firstVal != '' && secondVal != ""){
+
+        firstValInt = parseFloat(firstVal);
+        secondValInt = parseFloat(secondVal);
+        
+            
+        if(operator == "÷"){
+            answer = Math.floor(1000 * (firstValInt / secondValInt))/1000;
+            display.textContent = answer;
+        }
+        else if(operator == "x"){
+            answer = Math.floor(1000* (firstValInt * secondValInt))/1000;
+            display.textContent = answer;
+        }
+        else if(operator == "-"){
+            answer = Math.floor(1000*(firstValInt - secondValInt))/1000;
+            display.textContent = answer;
+        }
+        else if (operator == "+"){
+            answer = Math.floor(1000*(firstValInt + secondValInt))/1000;
+            display.textContent = answer;
+        }
+        prevCalc.textContent = `${firstVal} ${operator} ${secondVal} =`;
+
+        firstVal = answer;
+        secondVal = "";
+        operator = "";
+        
+        
+        eqClick = true;
+        
+    }
 }
