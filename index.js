@@ -82,14 +82,12 @@ function numClick(){
             if(!opClick){
                 firstVal += numArray[i].textContent;
                 firstValInt = parseInt(firstVal);
-                console.log("first value " + firstValInt);
                 prevCalc.textContent =  `${firstVal} ${operator}`;
                 display.textContent = firstVal;
             }
             else{
                 secondVal += numArray[i].textContent;
                 secondValInt = parseInt(secondVal);
-                console.log("second value " + secondValInt);
                 prevCalc.textContent = `${firstVal} ${operator}`;
                 display.textContent = secondVal;
             }
@@ -99,41 +97,24 @@ function numClick(){
 
 function operationClick(){
 
-    /*
-    let div = operator[0];
-    let mul = operator[1];
-    let sub = operator[2];
-    let add = operator[3];
-    */
-
     for(let i = 0; i < operatorsArray.length; i++){
         operatorsArray[i].addEventListener("click", () =>{
             if(firstVal != ''){
                 operator = operatorsArray[i].textContent;
                 if(!opClick){
-                    //prevCalc.textContent += operator;
-
-                    /*if(secondVal != ""){
-                        if(operator == "÷"){
-                            answer = secondVal / firstVal;
-                            display.textContent = answer;
-                            prevCalc = `${secondVal} ÷ ${firstVal}`;
-                        }
-                    }
-                    */
                     
-                    prevCalc.textContent = `${firstVal} ${operator}`;
+                    prevCalc.textContent = `${firstVal} ${operator} ${secondVal}`;
                     opClick = true;
                     
                 }
                 else{
                     
                     prevCalc.textContent = `${firstVal} ${operator}`;
-                    //opClick = false;
+                    
                     
                 }
                 
-                console.log("operation " + operator); 
+               
             }
             decClick = false;
             eqClick = false;    
@@ -164,8 +145,8 @@ function deleteClick(){
                 let lastChar = firstVal.charAt(firstVal.length - 1);
                 lastChar == "." ? decClick = false : decClick = true;
                 firstVal = firstVal.slice(0, -1);
-                console.log("first value " + firstVal);
                 display.textContent = firstVal;
+                prevCalc.textContent = firstVal;
                 if(firstVal == ""){
                     display.textContent = "0"
                 }
@@ -177,8 +158,8 @@ function deleteClick(){
                 let lastChar = secondVal.charAt(secondVal.length - 1);
                 lastChar == "." ? decClick = false : decClick = true;
                 secondVal = secondVal.slice(0, -1);
-                console.log("second Value " + secondVal);
                 display.textContent = secondVal;
+                prevCalc.textContent = secondVal;
                 if(secondVal == ""){
                     display.textContent = "0";
                 }
@@ -193,11 +174,13 @@ function decimalClick(){
             decClick = true;
             firstVal += "."
             display.textContent = firstVal;
+            prevCalc.textContent = firstVal;
         }
         else if(!decClick && opClick){
             decClick = true;
             secondVal += "."
             display.textContent = secondVal;
+            prevCalc.textContent = secondVal;
         }
     })
 }
@@ -213,7 +196,6 @@ function equalClick(){
             if(operator == "÷"){
                 answer = Math.floor(1000 * (firstValInt / secondValInt))/1000;
                 display.textContent = answer;
-                console.log(answer)
             }
             else if(operator == "x"){
                 answer = Math.floor(1000* (firstValInt * secondValInt))/1000;
@@ -227,23 +209,14 @@ function equalClick(){
                 answer = Math.floor(1000*(firstValInt + secondValInt))/1000;
                 display.textContent = answer;
             }
-            console.log("first val " + firstVal);
-            console.log("second val " + secondVal);
+            prevCalc.textContent = `${firstVal} ${operator} ${secondVal} =`;
 
             firstVal = answer;
             secondVal = "";
             operator = "";
-            prevCalc.textContent = `${firstVal} ${operator}`;
-
-            /*if(operator == "÷"){
-                answer = firstValInt / secondValInt;
-                display.textContent = answer.toString();
-    
-            }
-            */
+            
             
             eqClick = true;
-            console.log("answer " + answer);
             
         }
     })
