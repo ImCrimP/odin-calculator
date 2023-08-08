@@ -13,6 +13,9 @@ clearClicked = false;
 
 const deleteBtn = document.querySelector("#delete");
 
+const decimal = document.querySelector("#dec");
+let decClick = false;
+
 const numArray = [
     document.querySelector("#zero"),
     document.querySelector("#one"),
@@ -46,7 +49,8 @@ function displayInput(){
     operationClick();
     clearClick();
     deleteClick();
-    
+    decimalClick();
+
 }
 
 
@@ -97,6 +101,19 @@ function deleteClick(){
         else{
             secondVal = secondVal.slice(0, -1);
             console.log("second Value " + secondVal);
+        }
+    })
+}
+
+function decimalClick(){
+    decimal.addEventListener("click", () => {
+        if(!decClick && !opClick){
+            decClick = true;
+            firstVal += "."
+        }
+        else if(!decClick && opClick){
+            decClick = true;
+            secondVal += "."
         }
     })
 }
