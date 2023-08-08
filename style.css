@@ -1,0 +1,133 @@
+body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.calcContainer{
+    width: 600px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    
+}
+.calculator{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(181, 194, 208);
+    border: 5px solid;
+    border-radius: 25px;
+    box-shadow: -1px 1px 5px 4px rgb(76, 81, 87);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 30px;
+    padding: 25px;
+}
+
+#screenContainer{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    margin-top: 8px;
+    margin-bottom: 8px;;
+}
+
+#screen{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+    border: 5px solid;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+#prevCalc{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 36px;
+}
+
+#ans{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 78px;
+}
+
+
+
+
+
+
+
+.clrDelContainer{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+
+.clrDel{
+    width: 50%;
+    height: 100%;
+    border: 5px solid;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clear{
+    background-color: salmon;
+}
+
+#delete{
+    background-color: aqua;
+}
+
+
+
+
+
+
+.inputContainer{
+    display: grid;
+    width: 100%;
+    height: 65%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    justify-content: space-between;
+    
+}
+
+.input{
+    display: flex;
+    border: 5px solid;
+    border-radius: 25px;
+    background-color: rgb(235, 235, 235);
+    align-items: center;
+    justify-content: center;
+    font-size: 69px;
+}
