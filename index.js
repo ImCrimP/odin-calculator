@@ -89,16 +89,21 @@ function clearClick(){
         secondVal = '';
         clearClicked = true;
         opClick = false;
+        decClick = false;
     })
 }
 
 function deleteClick(){
     deleteBtn.addEventListener("click", () => {
         if(!opClick){
+            let lastChar = firstVal.charAt(firstVal.length - 1);
+            lastChar == "." ? decClick = false : decClick = true;
             firstVal = firstVal.slice(0, -1);
             console.log("first value " + firstVal);
         }
         else{
+            let lastChar = secondVal.charAt(secondVal.length - 1);
+            lastChar == "." ? decClick = false : decClick = true;
             secondVal = secondVal.slice(0, -1);
             console.log("second Value " + secondVal);
         }
